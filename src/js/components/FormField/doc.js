@@ -15,8 +15,12 @@ export const doc = FormField => {
 <FormField />`,
     )
     .intrinsicElement('div');
-
   DocumentedFormField.propTypes = {
+    a11yTitle: PropTypes.string.description(
+      `Custom label to be used by screen readers. When provided,
+        an aria-label will be added to the element. Should only be used
+        when FormField does not have a child with a11yTitle property.`,
+    ),
     component: PropTypes.oneOfType([
       PropTypes.func,
       PropTypes.object,
@@ -57,7 +61,7 @@ export const doc = FormField => {
     required: PropTypes.bool.description('Whether the field is required.'),
     validate: PropTypes.oneOfType([
       PropTypes.shape({
-        regexp: PropTypes.instanceOf(RegExp), // regular expression
+        regexp: PropTypes.object, // regular expression
         message: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
         status: PropTypes.oneOf(['error', 'info']),
       }),
@@ -65,7 +69,7 @@ export const doc = FormField => {
       PropTypes.arrayOf(
         PropTypes.oneOfType([
           PropTypes.shape({
-            regexp: PropTypes.instanceOf(RegExp), // regular expression
+            regexp: PropTypes.object, // regular expression
             message: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
             status: PropTypes.oneOf(['error', 'info']),
           }),
