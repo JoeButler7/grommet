@@ -1,13 +1,16 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, cleanup } from '@testing-library/react';
 import 'jest-styled-components';
 
 import { Grommet } from '../../Grommet';
 import { InfiniteScroll } from '..';
 
 describe('InfiniteScroll', () => {
+  afterEach(cleanup);
   const items = [];
   while (items.length < 4) items.push(items.length);
+  const largeItems = [];
+  while (largeItems.length < 80) largeItems.push(largeItems.length);
 
   test('basic', () => {
     const { container } = render(
@@ -69,6 +72,38 @@ describe('InfiniteScroll', () => {
     const { container } = render(
       <Grommet>
         <InfiniteScroll items={items} step={2} replace>
+          {(item, index) => <div key={index}>{item}</div>}
+        </InfiniteScroll>
+      </Grommet>,
+    );
+    expect(container.firstChild).toMatchSnapshot();
+  });
+  test('show index middle start', () => {
+    const { container } = render(
+      <Grommet>
+        <InfiniteScroll items={largeItems} step={2} show={23}>
+          {(item, index) => <div key={index}>{item}</div>}
+        </InfiniteScroll>
+      </Grommet>,
+    );
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  test('show index middle end', () => {
+    const { container } = render(
+      <Grommet>
+        <InfiniteScroll items={largeItems} step={2} show={43}>
+          {(item, index) => <div key={index}>{item}</div>}
+        </InfiniteScroll>
+      </Grommet>,
+    );
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  test('show index end', () => {
+    const { container } = render(
+      <Grommet>
+        <InfiniteScroll items={largeItems} step={2} show={79}>
           {(item, index) => <div key={index}>{item}</div>}
         </InfiniteScroll>
       </Grommet>,
