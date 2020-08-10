@@ -1,6 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`InfiniteScroll Multiple Columns 1`] = `
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  box-sizing: border-box;
+  max-width: 100%;
+  min-width: 0;
+  min-height: 0;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 0px;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+}
+
 .c1 {
   display: grid;
   box-sizing: border-box;
@@ -36,6 +54,27 @@ exports[`InfiniteScroll Multiple Columns 1`] = `
     <div>
       3
     </div>
+    <div>
+      4
+    </div>
+    <div>
+      5
+    </div>
+    <div>
+      6
+    </div>
+    <div>
+      7
+    </div>
+    <div>
+      8
+    </div>
+    <div>
+      9
+    </div>
+    <div
+      class="c2"
+    />
   </div>
 </div>
 `;
@@ -100,6 +139,24 @@ exports[`InfiniteScroll Single Column 1`] = `
     </div>
     <div>
       3
+    </div>
+    <div>
+      4
+    </div>
+    <div>
+      5
+    </div>
+    <div>
+      6
+    </div>
+    <div>
+      7
+    </div>
+    <div>
+      8
+    </div>
+    <div>
+      9
     </div>
     <div
       class="c2"

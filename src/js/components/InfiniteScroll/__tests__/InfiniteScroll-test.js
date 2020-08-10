@@ -7,7 +7,9 @@ import { InfiniteScroll } from '..';
 
 describe('InfiniteScroll', () => {
   const items = [];
+  const largeItems = [];
   while (items.length < 4) items.push(items.length);
+  while (largeItems.length < 1000) largeItems.push(largeItems.length);
 
   test('basic', () => {
     const { container } = render(
@@ -80,7 +82,7 @@ describe('InfiniteScroll', () => {
     const { container } = render(
       <Grommet>
         <Box direction="column">
-          <InfiniteScroll items={items} step={10} replace>
+          <InfiniteScroll items={largeItems} step={10} replace>
             {(item, index) => <div key={index}>{item}</div>}
           </InfiniteScroll>
         </Box>
@@ -93,7 +95,7 @@ describe('InfiniteScroll', () => {
     const { container } = render(
       <Grommet>
         <Grid columns="xsmall" rows="small">
-          <InfiniteScroll items={items} step={10}>
+          <InfiniteScroll items={largeItems} step={10}>
             {(item, index) => <div key={index}>{item}</div>}
           </InfiniteScroll>
         </Grid>
