@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import 'jest-styled-components';
 
-import { Grommet } from '../../Grommet';
+import { Box, Grommet, Grid } from '../..';
 import { InfiniteScroll } from '..';
 
 describe('InfiniteScroll', () => {
@@ -71,6 +71,32 @@ describe('InfiniteScroll', () => {
         <InfiniteScroll items={items} step={2} replace>
           {(item, index) => <div key={index}>{item}</div>}
         </InfiniteScroll>
+      </Grommet>,
+    );
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  test('Single Column', () => {
+    const { container } = render(
+      <Grommet>
+        <Box direction="column">
+          <InfiniteScroll items={items} step={10} replace>
+            {(item, index) => <div key={index}>{item}</div>}
+          </InfiniteScroll>
+        </Box>
+      </Grommet>,
+    );
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  test('Multiple Columns', () => {
+    const { container } = render(
+      <Grommet>
+        <Grid columns="xsmall" rows="small">
+          <InfiniteScroll items={items} step={10}>
+            {(item, index) => <div key={index}>{item}</div>}
+          </InfiniteScroll>
+        </Grid>
       </Grommet>,
     );
     expect(container.firstChild).toMatchSnapshot();
